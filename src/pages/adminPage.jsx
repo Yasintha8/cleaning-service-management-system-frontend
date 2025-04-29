@@ -3,7 +3,7 @@ import { FaUsers } from "react-icons/fa6";
 import { MdOutlineStorefront } from "react-icons/md";
 import { FaFileInvoice } from "react-icons/fa";
 import AddminServices from "./admin/services";
-import AddServices from "./admin/editService";
+import AddServices from "./admin/addServices";
 import EditService from "./admin/editService";
 
 export default function AdminPage() {
@@ -20,7 +20,7 @@ export default function AdminPage() {
                     <Route path="/services" element={<AddminServices />} />
                     <Route path="/orders" element={<h1>Orders</h1>} />
                     <Route path="/addservices" element={<AddServices />} />
-                    <Route path="/editservices" element={<EditService />} />
+                    <Route path="/editservice" element={<EditService />} />
                 </Routes>
             </div>
         </div>

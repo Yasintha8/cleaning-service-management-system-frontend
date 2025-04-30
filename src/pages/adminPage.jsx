@@ -5,6 +5,7 @@ import { FaFileInvoice } from "react-icons/fa";
 import AddminServices from "./admin/services";
 import AddServices from "./admin/addServices";
 import EditService from "./admin/editService";
+import User from "./admin/users";
 
 export default function AdminPage() {
     return (
@@ -16,7 +17,7 @@ export default function AdminPage() {
             </div>
             <div className="h-full bg-white w-[calc(100%-300px)] rounded-lg">
                 <Routes path="/*">
-                <Route path="/users" element={<h1>Users</h1>} />
+                <Route path="/users" element={<User />} />
                     <Route path="/services" element={<AddminServices />} />
                     <Route path="/orders" element={<h1>Orders</h1>} />
                     <Route path="/addservices" element={<AddServices />} />

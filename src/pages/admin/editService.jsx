@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link,  useLocation,  useNavigate } from "react-router-dom";
 
 export default function EditService() {
 
@@ -41,7 +41,7 @@ export default function EditService() {
 
     return(
         <div className="w-full h-full rounded-lg flex justify-center items-center">
-            <div className="w-[500px] h-[650px] rounded-lg shadow-lg flex flex-col items-center">
+            <div className="w-[500px] h-[400px] rounded-lg shadow-lg flex flex-col justify-center items-center  border-gray-200 border-2">
             <h1 className="text-3xl font-bold text-gray-700 m-[10px]">Edit Product</h1>
             <input 
                 disabled

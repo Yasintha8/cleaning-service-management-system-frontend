@@ -6,7 +6,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
 import toast from "react-hot-toast";
 import Loader from "../../components/loader";
-export default function AdminProductPage(){
+export default function AdminServicePage(){
 
     const [services, setServices] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -17,7 +17,7 @@ export default function AdminProductPage(){
             if(!loaded){
                 axios.get(import.meta.env.VITE_BACKEND_URL+"/api/service").then(
                     (response)=>{
-                        console.log("Products fetched successfully", response.data);
+                        console.log("Services fetched successfully", response.data);
                         setServices(response.data);
                         setLoaded(true);
                     }
@@ -28,8 +28,8 @@ export default function AdminProductPage(){
          ,  [loaded]
      )
 
-     // delete product function
-     async function deleteProduct(id){
+     // delete service function
+     async function deleteService(_id){
         const token = localStorage.getItem("token")
         if(token == null){
             toast.error("Please login first to delete service")
@@ -37,7 +37,7 @@ export default function AdminProductPage(){
         }
     
             try{
-                await axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/service/"+id, {
+                await axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/service/"+_id, {
                     headers: {
                         "Authorization": "Bearer "+token
                     }
@@ -52,51 +52,62 @@ export default function AdminProductPage(){
         }
 
     return(
-        <div className="w-full h-full rounded-lg relative">
-            <Link to={"/admin/addservices"} className="bg-gray-600 absolute text-white text-3xl p-[12px] rounded-full mb-4 hover:bg-gray-300 hover:text-gray-600 cursor-pointer right-5 bottom-5">
-            <FaPlus />
-            </Link>
-            {loaded && <table className="w-full ">
-                <thead>
-                    <tr>
-                        <th className="p-2">Service ID</th>
-                        <th className="p-2">Service Name</th>
-                        <th className="p-2">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                services.map(
-                    (service, index)=>{
-                        return(
-                            <tr key={index} className="border-b-2 border-gray-300 text-center hover:bg-gray-100 cursor-pointer">
-                                <td className="p-2">{service._id}</td>
-                                <td className="p-2">{service.name}</td>
-                                <td className="p-2">
-                                    <div className="w-full h-full flex justify-center">
-                                    <FaRegTrashAlt onClick={()=>{
-                                        deleteProduct(service._id)
-                                    }} className="text-[20px] m-[10px]  hover:text-red-600 " /> 
-                                    <GrEdit onClick={()=>{
-                                        //load edit product form
-                                        navigate("/admin/editservice", {
-                                            state: service
-                                        })
-                                    }}
-                                    className="text-[20px] m-[10px]  hover:text-blue-600" />
-                                    </div>
-                                </td>
-                            </tr>
-                        )
+        <div className="w-full h-full relative rounded-xl shadow-md bg-white">
+  {/* Add Service Button */}
+  <Link
+    to="/admin/addservices"
+    className="bg-green-600 hover:bg-green-500 text-white text-2xl p-3 rounded-full absolute bottom-5 right-5 shadow-lg transition duration-200"
+    title="Add Service"
+  >
+    <FaPlus />
+  </Link>
+
+  {/* Table or Loader */}
+  {loaded ? (
+    <div className="overflow-x-auto">
+      <table className="min-w-full divide-y divide-gray-200 text-sm text-gray-800">
+        <thead className="bg-green-500 text-sm text-left text-white uppercase tracking-wider">
+          <tr className="divide-x divide-gray-300">
+            <th className="px-6 py-3">Service ID</th>
+            <th className="px-6 py-3">Service Name</th>
+            <th className="px-6 py-3 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-200">
+          {services.map((service, index) => (
+            <tr
+              key={index}
+              className="hover:bg-gray-100 transition duration-150 ease-in-out text-sm "
+            >
+              <td className="px-6 py-4 whitespace-nowrap">{service._id}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{service.name}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-center">
+                <div className="inline-flex gap-4 items-center justify-center">
+                  <FaRegTrashAlt
+                    onClick={() => deleteService(service._id)}
+                    className="text-red-500 hover:text-red-600 cursor-pointer text-[18px] transition"
+                    title="Delete"
+                  />
+                  <GrEdit
+                    onClick={() =>
+                      navigate("/admin/editservice", {
+                        state: service,
+                      })
                     }
-                )
-            }
-                </tbody>
-            </table>}
-            {
-                !loaded && 
-                <Loader />
-            }
-        </div>
+                    className="text-blue-500 hover:text-blue-600 cursor-pointer text-[18px] transition"
+                    title="Edit"
+                  />
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <Loader />
+  )}
+</div>
+
     )
 }

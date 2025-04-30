@@ -13,34 +13,31 @@ export default function LoginPage() {
     function handleLogin(){
         setLoading(true);
 
-        axios.post(import.meta.env.VITE_BACKEND_URL+"/api/user/login",{
+        axios.post(import.meta.env.VITE_BACKEND_URL+"/api/user/login", {
             username: username,
             password: password
         }).then(
             (response) => {
                 console.log("Login successfull", response.data);
                 toast.success("Login successfull");
-                localStorage.setItem("token", response.data.token);
-
+        
+                localStorage.setItem("token", response.data.token); // token = string
+                localStorage.setItem("user", JSON.stringify(response.data.user)); // user = object
+        
                 const user = response.data.user;
                 if(user.role === "admin"){
-                    // Redirect to admin page
                     navigate("/admin");
                 } else {
-                    // Redirect to home page
                     navigate("/");
                 }
-            setLoading(false);
-
-        }) .catch(
-            (error) => {
-                console.log("Login failed", error.response.data);
-                toast.error(error.response.data.message||"Login failed")
                 setLoading(false);
             }
-        )
-
-        console.log("Login Button Clicked");    
+        ).catch((error) => {
+            console.log("Login failed", error.response.data);
+            toast.error(error.response.data.message || "Login failed");
+            setLoading(false);
+        });
+        
     }   
 
     return (

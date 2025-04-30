@@ -6,6 +6,7 @@ import AddminServices from "./admin/services";
 import AddServices from "./admin/addServices";
 import EditService from "./admin/editService";
 import User from "./admin/users";
+import AdminBookingPage from "./admin/bookings";
 
 export default function AdminPage() {
     return (
@@ -19,7 +20,7 @@ export default function AdminPage() {
                 <Routes path="/*">
                 <Route path="/users" element={<User />} />
                     <Route path="/services" element={<AddminServices />} />
-                    <Route path="/orders" element={<h1>Orders</h1>} />
+                    <Route path="/bookings" element={<AdminBookingPage />} />
                     <Route path="/addservices" element={<AddServices />} />
                     <Route path="/editservice" element={<EditService />} />
                 </Routes>

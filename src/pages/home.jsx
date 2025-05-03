@@ -104,18 +104,18 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
-      <Header />
-      {/* Hero */}
-      <header
-  className="relative text-white py-24 text-center shadow-md bg-cover object-cover bg-center min-h-[100vh]"
-  style={{ backgroundImage: `url(${bgImg})`, height: '100vh' }}
->
+        <div className="min-h-screen bg-gray-50 text-gray-800">
+          <Header />
+          {/* Hero */}
+          <header
+      className="relative text-white py-24 text-center shadow-md bg-cover object-cover bg-center min-h-[100vh]"
+      style={{ backgroundImage: `url(${bgImg})`, height: '100vh' }}
+        >
 
         {/* Text Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 mt-40">
           <h1 className="text-6xl text-green-500 font-extrabold mb-4 drop-shadow">SparklePro Cleaning Services</h1>
-          <p className="text-xl mb-6 opacity-90">Professional Home & Office Cleaning</p>
+          <p className="text-xl mb-6 opacity-90 text-gray-600">Professional Home & Office Cleaning</p>
           <a
             href="#booking"
             className="inline-block text-xl bg-white text-green-600 font-semibold px-8 py-3 rounded-lg shadow hover:bg-green-100 transition-all duration-300"

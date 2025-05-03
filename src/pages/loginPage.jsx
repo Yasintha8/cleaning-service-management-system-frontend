@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import loginbg from "../assets/loginbg.jpg";
+import loginbg2 from "../assets/loginbg2.png";
 
 export default function LoginPage() {
 
@@ -41,44 +43,47 @@ export default function LoginPage() {
     }   
 
     return (
-        <div className="w-full h-screen bg-[url(/login-bg.jpg)] bg-cover bg-center flex">
+        <div className="w-full h-screen bg-cover bg-center flex" style={{ backgroundImage: `url(${loginbg})` }} >
 
-            <div className="w-[50%] h-full flex justify-center items-center bg-black/25">
-                <div className="w-[450px] h-[550px] backdrop-blur-xl border border-white shadow-2xl rounded-xl flex flex-col justify-center items-center bg">
-                <h2 className="text-white text-4xl font-semibold mb-[20px]">Welcome Back</h2>
-                    <input 
-                        onChange={(e) => 
-                            setUsername(e.target.value)}
-                        type="text" 
-                        className="w-[400px] h-[50px] border border-white text-white placeholder-gray rounded-xl p-4 m-[5px] focus:outline-none "
-                        placeholder="Username"/>
-                    <input 
-                        onChange={(e) => 
-                            setPassword(e.target.value)}
-                        type="password" 
-                        className="w-[400px] h-[50px] border border-white text-white placeholder-gray rounded-xl p-4 m-[5px] focus:outline-none "
-                        placeholder="Password"/>
+             {/* Left Side: Login Form */}
+            <div className="w-1/2 h-full hidden md:block">
+                <img src={loginbg2} alt="" className="w-full h-full object-cover"/>
+            </div>  
+       
+            {/* Right Side: Optional Image or Content */}
+            <div className="w-1/2 h-full flex justify-center items-center">
+                <div className="w-[450px] h-[550px] backdrop-blur-lg border border-white/30 shadow-2xl rounded-xl flex flex-col justify-center items-center bg-black/10 p-6">
+                <h2 className="text-white text-4xl font-bold mb-6">Welcome Back</h2>
 
-                    <button 
-                        onClick={handleLogin}
-                        className="w-[400px] h-[50px] bg-green-600 cursor-pointer text-white hover:bg-green-700 rounded-xl mt-[20px]">
-                    
-                    {
-                        loading?"Loading...":"Login"
-                    }
-                    
-                    </button>
-                    <p className="text-gray-800 mt-[20px]">
-                        Don't have an account yet? <span className="text-green-800 hover:text-green-900">
-                        <Link to={"/register"}>Register Now</Link>
-                    </span>
-                    </p>
+                <input
+                    onChange={(e) => setUsername(e.target.value)}
+                    type="text"
+                    placeholder="Username"
+                    className="w-full h-[50px] border border-white/30 bg-transparent text-white placeholder-white/70 rounded-xl p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+
+                <input
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    placeholder="Password"
+                    className="w-full h-[50px] border border-white/30 bg-transparent text-white placeholder-white/70 rounded-xl p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+
+                <button
+                    onClick={handleLogin}
+                    className="w-full h-[50px] bg-green-600 hover:bg-green-700 transition duration-300 text-white font-semibold rounded-xl mt-4"
+                >
+                    {loading ? "Loading..." : "Login"}
+                </button>
+
+                <p className="text-white mt-6">
+                    Don't have an account yet?{" "}
+                    <Link to="/register" className="text-green-300 hover:text-green-400 font-semibold underline">
+                    Register Now
+                    </Link>
+                </p>
                 </div>
             </div>
-
-            <div className="w-[50%] h-full">
-                
             </div>
-        </div>
     )
 }

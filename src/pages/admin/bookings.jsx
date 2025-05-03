@@ -47,11 +47,11 @@ export default function AdminBookingPage() {
   }
 
   return (
-    <div className="w-full h-full relative rounded-xl shadow-md bg-white p-4">
+    <div className="overflow-x-auto p-2">
       <h2 className="text-2xl font-semibold mb-4">All Bookings</h2>
 
       {loaded ? (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto w-full mx-auto bg-white border border-gray-200 rounded-xl shadow-sm p-4">
           <table className="min-w-full divide-y divide-gray-200 text-sm text-gray-800">
             <thead className="bg-green-500 text-sm text-left text-white uppercase tracking-wider">
               <tr className="divide-x divide-gray-300">

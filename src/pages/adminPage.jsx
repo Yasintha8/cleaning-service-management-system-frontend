@@ -11,12 +11,12 @@ import AdminBookingPage from "./admin/bookings";
 export default function AdminPage() {
     return (
         <div className="w-full h-screen bg-gray-200 flex p-2">
-            <div className="h-full w-[300px]">
+            <div className="h-full w-[250px]">
               <Link to="/admin/users" className="flex items-center p-2"><FaUsers className="mr-2"/>Users</Link>
               <Link to="/admin/services" className="flex items-center p-2"><MdOutlineStorefront className="mr-2" /> Services</Link>
               <Link to="/admin/bookings" className="flex items-center p-2"><FaFileInvoice className="mr-2" />Bookings</Link>
             </div>
-            <div className="h-full bg-white w-[calc(100%-300px)] rounded-lg">
+            <div className="h-full bg-white w-[calc(100%-250px)] rounded-lg">
                 <Routes path="/*">
                 <Route path="/users" element={<User />} />
                     <Route path="/services" element={<AddminServices />} />

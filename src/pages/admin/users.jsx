@@ -24,7 +24,8 @@ const Users = () => {
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto p-2">
+      <h2 className="text-2xl font-semibold mb-4">Users</h2>
   {users.length === 0 ? (
     <p className="text-center text-gray-500 text-sm">No users found.</p>
   ) : (

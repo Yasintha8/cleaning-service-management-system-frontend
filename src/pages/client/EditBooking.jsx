@@ -74,55 +74,71 @@ const EditBooking = () => {
   };
 
   return (
-    <div className="p-6 max-w-lg mx-auto">
-      <h2 className="text-xl font-bold mb-4">Edit Booking</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="customer_name"
-          placeholder="Customer Name"
-          value={formData.customer_name}
-          onChange={handleChange}
-          required
-          className="w-full border p-2 rounded"
-        />
-        <input
-          type="text"
-          name="address"
-          placeholder="Address"
-          value={formData.address}
-          onChange={handleChange}
-          required
-          className="w-full border p-2 rounded"
-        />
-        <input
-          type="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-          className="w-full border p-2 rounded"
-        />
-        <select
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-          required
-          className="w-full border p-2 rounded"
-        >
-          <option value="">Select Service</option>
-          {services.map((s) => (
-            <option key={s._id} value={s.name}>{s.name}</option>
-          ))}
-        </select>
-        <button
-          type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 cursor-pointer"
-        >
-          Update Booking
-        </button>
-      </form>
+    <div className="p-6 max-w-lg mx-auto bg-white rounded-2xl shadow-xl border border-gray-200 mt-30">
+    <h2 className="text-3xl font-extrabold text-green-600 mb-6 text-center">Edit Booking</h2>
+
+    <form onSubmit={handleSubmit} className="space-y-5">
+    <input
+      type="text"
+      name="customer_name"
+      placeholder="Customer Name"
+      value={formData.customer_name}
+      onChange={handleChange}
+      required
+      className="w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-teal-400"
+    />
+
+    <input
+      type="text"
+      name="address"
+      placeholder="Address"
+      value={formData.address}
+      onChange={handleChange}
+      required
+      className="w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-teal-400"
+    />
+
+    <input
+      type="date"
+      name="date"
+      value={formData.date}
+      onChange={handleChange}
+      required
+      className="w-full h-12 border border-gray-300 rounded-lg px-4 text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+    />
+
+    <select
+      name="service"
+      value={formData.service}
+      onChange={handleChange}
+      required
+      className="w-full h-12 border border-gray-300 rounded-lg px-4 text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+    >
+      <option value="">Select Service</option>
+      {services.map((s) => (
+        <option key={s._id} value={s.name}>{s.name}</option>
+      ))}
+    </select>
+
+    <div className="flex justify-between gap-4">
+      <button
+        type="button"
+        onClick={() => navigate("/dashboard")}
+        className="w-1/2 h-12 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition duration-300"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        className="w-1/2 h-12 bg-green-600 hover:bg-teal-700 text-white font-bold rounded-lg transition duration-300"
+      >
+        Update Booking
+      </button>
     </div>
+  </form>
+
+</div>
+
   );
 };
 

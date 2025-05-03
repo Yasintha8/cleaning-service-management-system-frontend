@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/header";
 
 const UserDashboard = () => {
@@ -11,9 +11,11 @@ const UserDashboard = () => {
   const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchBookings = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/bookings/user/${user._id || user.id}`,
@@ -24,21 +26,16 @@ const UserDashboard = () => {
         setBookings(response.data);
       } catch (error) {
         console.error("Error fetching bookings:", error);
-  
-        // Only show error toast if it's not just an empty array
-        if (
-          !error.response ||
-          error.response.status !== 404 // assuming 404 might be returned for no bookings
-        ) {
+        if (!error.response || error.response.status !== 404) {
           toast.error("Failed to load your bookings.");
         }
       } finally {
         setLoading(false);
       }
     };
-
+  
     if (user) fetchBookings();
-  }, []);
+  }, [location]); 
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -71,8 +68,9 @@ const UserDashboard = () => {
                   </p>
                   <p>
                     <span className="font-semibold text-gray-700">Service:</span>{" "}
-                    <span className="text-green-600">{booking.service_name}</span>
+                    <span className="text-green-600">{booking.service_id.name}</span>
                   </p>
+                  
                   <p>
                     <span className="font-semibold text-gray-700">Date:</span>{" "}
                     {new Date(booking.date_time).toLocaleString()}

@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import bgImg from "../assets/bgImg.jpg"; // Adjust path based on your file structure
 import Header from "../components/header";
 
 export default function Home() {
-  
   const [services, setServices] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,6 +41,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const token = localStorage.getItem("token");
       const user = JSON.parse(localStorage.getItem("user")); // This is correct
@@ -106,81 +107,88 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 text-gray-800">
       <Header />
       {/* Hero */}
-      <header className="bg-green-600 text-white py-20 text-center">
-        <h1 className="text-4xl font-bold mb-4">SparklePro Cleaning Services</h1>
-        <p className="text-lg mb-6">Professional Home & Office Cleaning</p>
-        <a
-          href="#booking"
-          className="bg-white text-green-600 font-semibold px-6 py-2 rounded-lg shadow hover:bg-gray-100 transition"
-        >
-          Book a Service
-        </a>
+      <header
+  className="relative text-white py-24 text-center shadow-md bg-cover object-cover bg-center min-h-[100vh]"
+  style={{ backgroundImage: `url(${bgImg})`, height: '100vh' }}
+>
+
+        {/* Text Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 mt-40">
+          <h1 className="text-6xl text-green-500 font-extrabold mb-4 drop-shadow">SparklePro Cleaning Services</h1>
+          <p className="text-xl mb-6 opacity-90">Professional Home & Office Cleaning</p>
+          <a
+            href="#booking"
+            className="inline-block text-xl bg-white text-green-600 font-semibold px-8 py-3 rounded-lg shadow hover:bg-green-100 transition-all duration-300"
+          >
+            Book a Service
+          </a>
+        </div>
       </header>
-
       {/* Services */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 py-10">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg border border-gray-200 hover:bg-green-50 transition cursor-pointer"
-          >
-            <h3 className="text-xl font-semibold mb-2">{service.name}</h3>
-            <p className="text-gray-600 text-sm">{service.description}</p>
-          </div>
-        ))}
-      </div>
-
+      <section className="px-6 py-16 bg-gray-50 text-center">
+        <h2 className="text-3xl font-extrabold text-green-700 mb-10">Our Services</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow p-6 border border-gray-200 hover:shadow-xl hover:bg-green-50 transform hover:-translate-y-1 transition-all duration-300"
+            >
+              <h3 className="text-xl font-bold text-green-700 mb-3">{service.name}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+            </div>
+          ))}
+        </div>
+  </section>
       {/* Booking Form */}
-      <section id="booking" className="bg-white py-16 px-4">
-        <h2 className="text-2xl font-bold text-center mb-10">Book a Cleaning Service</h2>
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            onChange={handleChange}
-            value={formData.name}
-            className="w-full p-3 border rounded"
-          />
-          <input
-            type="text"
-            name="address"
-            placeholder="Your Address"
-            required
-            onChange={handleChange}
-            value={formData.address}
-            className="w-full p-3 border rounded"
-          />
-          <input
-            type="date"
-            name="date"
-            required
-            onChange={handleChange}
-            value={formData.date}
-            className="w-full p-3 border rounded"
-          />
-          <select
-            name="service"
-            onChange={handleChange}
-            value={formData.service}
-            className="w-full p-3 border rounded"
-          >
-            {services.map((service) => (
-              <option key={service._id} value={service.name}>
-                {service.name}
-              </option>
-            ))}
-          </select>
-          <button
-            type="submit"
-            className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 transition cursor-pointer"
-          >
-            Submit Booking
-          </button>
-        </form>
-      </section>
-
+    <section id="booking" className="bg-white py-20 px-4">
+      <h2 className="text-3xl font-bold text-center mb-10 text-green-700">Book a Cleaning Service</h2>
+      <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-5">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          onChange={handleChange}
+          value={formData.name}
+          className="w-full p-3 border border-gray-300 rounded focus:outline-green-500"
+        />
+        <input
+          type="text"
+          name="address"
+          placeholder="Your Address"
+          required
+          onChange={handleChange}
+          value={formData.address}
+          className="w-full p-3 border border-gray-300 rounded focus:outline-green-500"
+        />
+        <input
+          type="date"
+          name="date"
+          required
+          onChange={handleChange}
+          value={formData.date}
+          className="w-full p-3 border border-gray-300 rounded focus:outline-green-500"
+        />
+        <select
+          name="service"
+          onChange={handleChange}
+          value={formData.service}
+          className="w-full p-3 border border-gray-300 rounded focus:outline-green-500"
+        >
+          {services.map((service) => (
+            <option key={service._id} value={service.name}>
+              {service.name}
+            </option>
+          ))}
+        </select>
+        <button
+          type="submit"
+          className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 transition cursor-pointer"
+        >
+          Submit Booking
+        </button>
+      </form>
+    </section>
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-6 text-center">
         <p>&copy; 2025 SparklePro Cleaning. All rights reserved.</p>

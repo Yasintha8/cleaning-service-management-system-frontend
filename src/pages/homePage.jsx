@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./home";
+import EditBooking from "./client/EditBooking";
 
 export default function HomePage() {
     return (

@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import Header from "../components/header";
 
 export default function Home() {
+  
   const [services, setServices] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [formData, setFormData] = useState({
@@ -40,7 +41,6 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const token = localStorage.getItem("token");
       const user = JSON.parse(localStorage.getItem("user")); // This is correct
@@ -55,9 +55,7 @@ export default function Home() {
       
       
 
-      const selectedService = services.find(
-        (s) => s.name === formData.service
-      );
+      const selectedService = services.find((s) => s.name === formData.service);
       if (!selectedService) {
         toast.error("Selected service not found.");
         return;
@@ -70,6 +68,7 @@ export default function Home() {
         address: formData.address,
         date_time: new Date(formData.date).toISOString(),
         service_id: selectedService._id,
+        service_name: selectedService.name,
         user_id: user._id || user.id,
 
       };
@@ -175,7 +174,7 @@ export default function Home() {
           </select>
           <button
             type="submit"
-            className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 transition"
+            className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 transition cursor-pointer"
           >
             Submit Booking
           </button>

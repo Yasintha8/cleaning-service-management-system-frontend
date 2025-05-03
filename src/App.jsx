@@ -5,6 +5,7 @@ import Home from './pages/home';
 import LoginPage from './pages/loginPage';
 import RegisterPage from './pages/client/register';
 import UserDashboard from './pages/client/userDashboard';
+import EditBooking from './pages/client/EditBooking';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Routes path="/*">
             <Route path="/admin/*" element={<AdminPage   />} />
             <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/edit-booking/:id" element={<EditBooking/>} />
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage/>} />

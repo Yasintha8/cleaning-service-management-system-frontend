@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import Header from "../components/header";
 
 export default function Home() {
   const [services, setServices] = useState([]);
@@ -42,12 +43,17 @@ export default function Home() {
 
     try {
       const token = localStorage.getItem("token");
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(localStorage.getItem("user")); // This is correct
+      console.log("User:", user);
 
-      if (!user || !user._id || !token) {
-        toast.error("You must be logged in to book a service.");
+      
+
+      if (!user || !(user._id || user.id)) {
+        toast.error("User not logged in or session expired.");
         return;
       }
+      
+      
 
       const selectedService = services.find(
         (s) => s.name === formData.service
@@ -57,16 +63,21 @@ export default function Home() {
         return;
       }
 
+      
+
       const bookingData = {
-        name: formData.name,
+        customer_name: formData.name,
         address: formData.address,
-        date: formData.date,
+        date_time: new Date(formData.date).toISOString(),
         service_id: selectedService._id,
-        user_id: user._id,
+        user_id: user._id || user.id,
+
       };
+            
+      console.log("Booking data:", bookingData);
 
       const response = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/api/booking",
+        import.meta.env.VITE_BACKEND_URL+"/api/bookings",
         bookingData,
         {
           headers: {
@@ -94,6 +105,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
+      <Header />
       {/* Hero */}
       <header className="bg-green-600 text-white py-20 text-center">
         <h1 className="text-4xl font-bold mb-4">SparklePro Cleaning Services</h1>

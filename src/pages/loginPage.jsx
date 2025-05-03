@@ -20,7 +20,7 @@ export default function LoginPage() {
             (response) => {
                 console.log("Login successfull", response.data);
                 toast.success("Login successfull");
-        
+                        
                 localStorage.setItem("token", response.data.token); // token = string
                 localStorage.setItem("user", JSON.stringify(response.data.user)); // user = object
         

@@ -107,10 +107,7 @@ export default function Home() {
         <div className="min-h-screen bg-gray-50 text-gray-800">
           <Header />
           {/* Hero */}
-          <header
-      className="relative text-white py-24 text-center shadow-md bg-cover object-cover bg-center min-h-[100vh]"
-      style={{ backgroundImage: `url(${bgImg})`, height: '100vh' }}
-        >
+          <header className="relative text-white py-24 text-center shadow-md bg-cover object-cover bg-center min-h-[100vh]" style={{ backgroundImage: `url(${bgImg})`, height: '100vh' }}>
 
         {/* Text Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 mt-40">
@@ -124,8 +121,9 @@ export default function Home() {
           </a>
         </div>
       </header>
+      
       {/* Services */}
-      <section className="px-6 py-16 bg-gray-50 text-center">
+      <section id="services" className="px-6 py-16 bg-green-50 text-center">
         <h2 className="text-3xl font-extrabold text-green-700 mb-10">Our Services</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
@@ -138,7 +136,8 @@ export default function Home() {
             </div>
           ))}
         </div>
-  </section>
+    </section>
+
       {/* Booking Form */}
     <section id="booking" className="bg-white py-20 px-4">
       <h2 className="text-3xl font-bold text-center mb-10 text-green-700">Book a Cleaning Service</h2>
@@ -189,6 +188,30 @@ export default function Home() {
         </button>
       </form>
     </section>
+
+    {/* About Us */}
+      <section id="about" className="bg-green-50 py-20 px-6 text-center">
+        <h2 className="text-3xl font-bold text-green-700 mb-6">About Us</h2>
+        <div className="max-w-3xl mx-auto text-gray-700 leading-relaxed text-lg">
+          <p>
+            At <span className="font-semibold text-green-700">SparklePro Cleaning Services</span>, we believe that a clean environment is a happy environment. 
+            With years of experience in both home and office cleaning, our dedicated team ensures your space is spotless, sanitized, and sparkling. 
+            We use eco-friendly products and trusted techniques to provide reliable, top-notch cleaning services tailored to your needs.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Us */}
+      <section id="contact" className="bg-white py-20 px-6 text-center">
+        <h2 className="text-3xl font-bold text-green-700 mb-10">Contact Us</h2>
+        <div className="max-w-3xl mx-auto text-left space-y-4 text-gray-700 text-lg">
+          <p><strong>📍 Address:</strong> 123 Green Street, Clean City, Sri Lanka</p>
+          <p><strong>📞 Phone:</strong> +94 71 234 5678</p>
+          <p><strong>✉️ Email:</strong> support@sparklepro.lk</p>
+          <p>Have questions or want a custom quote? Feel free to reach out to us anytime. We’re here to help!</p>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-6 text-center">
         <p>&copy; 2025 SparklePro Cleaning. All rights reserved.</p>

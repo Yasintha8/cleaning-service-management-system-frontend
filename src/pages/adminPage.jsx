@@ -7,18 +7,24 @@ import AddServices from "./admin/addServices";
 import EditService from "./admin/editService";
 import User from "./admin/users";
 import AdminBookingPage from "./admin/bookings";
+import Dashboard from "../components/adminDashboard";
 
 export default function AdminPage() {
     return (
-        <div className="w-full h-screen bg-gray-200 flex p-2">
-            <div className="h-full w-[250px]">
-              <Link to="/admin/users" className="flex items-center p-2"><FaUsers className="mr-2"/>Users</Link>
-              <Link to="/admin/services" className="flex items-center p-2"><MdOutlineStorefront className="mr-2" /> Services</Link>
-              <Link to="/admin/bookings" className="flex items-center p-2"><FaFileInvoice className="mr-2" />Bookings</Link>
+        <div className="flex h-screen">
+            {/* Sidebar */}
+            <div className="w-[200px] bg-gray-800 text-white text-lg shadow-md h-screen fixed top-0 left-0 z-10 p-4">
+                <Link to="/admin" className="flex items-center p-2"><FaUsers className="mr-2" />Dashboard</Link>
+                <Link to="/admin/users" className="flex items-center p-2"><FaUsers className="mr-2" />Users</Link>
+                <Link to="/admin/services" className="flex items-center p-2"><MdOutlineStorefront className="mr-2" />Services</Link>
+                <Link to="/admin/bookings" className="flex items-center p-2"><FaFileInvoice className="mr-2" />Bookings</Link>
             </div>
-            <div className="h-full bg-white w-[calc(100%-250px)] rounded-lg">
-                <Routes path="/*">
-                <Route path="/users" element={<User />} />
+
+            {/* Main Content */}
+            <div className="ml-[200px] w-[calc(100%-200px)] h-screen overflow-y-auto bg-gray-100 p-4 rounded-lg">
+                <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/users" element={<User />} />
                     <Route path="/services" element={<AddminServices />} />
                     <Route path="/bookings" element={<AdminBookingPage />} />
                     <Route path="/addservices" element={<AddServices />} />

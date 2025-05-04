@@ -49,13 +49,13 @@ export default function AddProductForm() {
                 placeholder="Service Name"
             />
 
-            <input 
+            <textarea 
                 value={description}
                 onChange={
                     (e) => 
                         setDescription(e.target.value)
                 }
-                className="w-[400px] h-[50px] border border-gray-500 text-gray placeholder-gray rounded-xl p-4 m-[5px] focus:outline-none focus:ring-1 focus:ring-white"
+                className="w-[400px] h-[60px] border border-gray-500 text-gray placeholder-gray rounded-xl p-4 m-[5px] focus:outline-none focus:ring-1 focus:ring-white"
                 placeholder="Service Description"
             />          
             <div className="w-[400px] h-[100px] flex justify-between items-center rounded-lg">

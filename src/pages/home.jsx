@@ -132,7 +132,7 @@ export default function Home() {
               className="bg-white rounded-2xl shadow p-6 border border-gray-200 hover:shadow-xl hover:bg-green-50 transform hover:-translate-y-1 transition-all duration-300"
             >
               <h3 className="text-xl font-bold text-green-700 mb-3">{service.name}</h3>
-              <p className="text-gray-600 text-md leading-relaxed">{service.description}</p>
+              <p className="text-gray-600 text-md text-justify leading-relaxed">{service.description}</p>
             </div>
           ))}
         </div>

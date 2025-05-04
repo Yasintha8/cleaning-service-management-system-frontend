@@ -68,7 +68,7 @@ export default function Header() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 space-y-4 lg:space-y-0">
             <span className="lg:mb-0">
               Welcome,{" "}
-              <span className="hover:text-purple-300 font-bold">{username}</span>
+              <span className="hover:text-black font-bold">{username}</span>
             </span>
             <button
               onClick={() => {

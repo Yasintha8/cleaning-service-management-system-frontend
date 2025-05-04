@@ -14,7 +14,7 @@ export default function AdminPage() {
         <div className="flex h-screen">
             {/* Sidebar */}
             <div className="w-[200px] bg-gray-800 text-white text-lg shadow-md h-screen fixed top-0 left-0 z-10 p-4">
-                <Link to="/admin" className="flex items-center p-2"><FaUsers className="mr-2" />Dashboard</Link>
+                <Link to="/admin" className="flex items-center p-2"><FaFileInvoice className="mr-2" />Dashboard</Link>
                 <Link to="/admin/users" className="flex items-center p-2"><FaUsers className="mr-2" />Users</Link>
                 <Link to="/admin/services" className="flex items-center p-2"><MdOutlineStorefront className="mr-2" />Services</Link>
                 <Link to="/admin/bookings" className="flex items-center p-2"><FaFileInvoice className="mr-2" />Bookings</Link>

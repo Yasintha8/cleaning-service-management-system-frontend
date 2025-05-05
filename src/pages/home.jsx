@@ -160,14 +160,7 @@ export default function Home() {
           value={formData.address}
           className="w-full p-3 border border-gray-300 rounded focus:outline-green-500"
         />
-        <input
-          type="date"
-          name="date"
-          required
-          onChange={handleChange}
-          value={formData.date}
-          className="w-full p-3 border border-gray-300 rounded focus:outline-green-500"
-        />
+        
         <select
           name="service"
           onChange={handleChange}
@@ -180,6 +173,15 @@ export default function Home() {
             </option>
           ))}
         </select>
+
+        <input
+          type="date"
+          name="date"
+          required
+          onChange={handleChange}
+          value={formData.date}
+          className="w-full p-3 border border-gray-300 rounded focus:outline-green-500"
+        />
         <button
           type="submit"
           className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 transition cursor-pointer"

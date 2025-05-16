@@ -44,7 +44,7 @@ export default function Home() {
 
     try {
       const token = localStorage.getItem("token");
-      const user = JSON.parse(localStorage.getItem("user")); // This is correct
+      const user = JSON.parse(localStorage.getItem("user")); 
       console.log("User:", user);
 
       

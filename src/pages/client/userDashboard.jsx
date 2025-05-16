@@ -89,52 +89,57 @@ const handleDelete = (id) => {
           <p className="text-center text-gray-600">No bookings found.</p>
         ) : (
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bookings.map((booking) => (
-              <li
-                key={booking._id}
-                className="bg-white border border-gray-200 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300"
-              >
-                <div className="space-y-2">
-                  <p>
-                    <span className="font-semibold text-gray-700">Customer Name:</span>{" "}
-                    {booking.customer_name}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-gray-700">Service:</span>{" "}
-                    <span className="text-green-600">{booking.service_id.name}</span>
-                  </p>
-                  <p>
-                    <span className="font-semibold text-gray-700">Date:</span>{" "}
-                    {new Date(booking.date_time).toLocaleString()}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-gray-700">Address:</span>{" "}
-                    {booking.address}
-                  </p>
-                </div>
+          {bookings.map((booking) => (
+            <li
+              key={booking._id}
+              className="bg-white border border-gray-200 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300"
+            >
+              <div className="space-y-2">
+                <p>
+                  <span className="font-semibold text-gray-700">Customer Name:</span>{" "}
+                  {booking.customer_name}
+                </p>
+                <p>
+                  <span className="font-semibold text-gray-700">Service:</span>{" "}
+                  <span className="text-green-600">{booking.service_id.name}</span>
+                </p>
+                <p>
+                  <span className="font-semibold text-gray-700">Date:</span>{" "}
+                  {new Date(booking.date_time).toLocaleDateString()}
 
-                <div className="flex gap-2 mt-4">
-                  <button
-                    onClick={() =>
-                      navigate(`/edit-booking/${booking._id}`, {
-                        state: booking,
-                      })
-                    }
-                    className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition cursor-pointer"
-                  >
-                    Edit Booking
-                  </button>
+                </p>
+                <p>
+                  <span className="font-semibold text-gray-700">Submitted On:</span>{" "}
+                  {new Date(booking.createdAt).toLocaleString()}
+                </p>
+                <p>
+                  <span className="font-semibold text-gray-700">Address:</span>{" "}
+                  {booking.address}
+                </p>
+              </div>
 
-                  <button
-                    onClick={() => handleDelete(booking._id)}
-                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition cursor-pointer"
-                  >
-                    Delete Booking
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
+              <div className="flex gap-2 mt-4">
+                <button
+                  onClick={() =>
+                    navigate(`/edit-booking/${booking._id}`, {
+                      state: booking,
+                    })
+                  }
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition cursor-pointer"
+                >
+                  Edit Booking
+                </button>
+
+                <button
+                  onClick={() => handleDelete(booking._id)}
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition cursor-pointer"
+                >
+                  Delete Booking
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
         )}
       </div>
     </div>

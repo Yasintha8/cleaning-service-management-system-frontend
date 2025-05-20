@@ -77,7 +77,7 @@ export default function Header() {
               }}
               className="bg-white text-teal-700 px-4 py-2 rounded-md shadow hover:bg-teal-100 transition duration-300 font-bold cursor-pointer"
             >
-              Dashboard
+              My Bookings
             </button>
             <button
               onClick={() => {

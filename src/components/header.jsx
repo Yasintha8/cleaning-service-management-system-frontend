@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Header() {
   const navigate = useNavigate();
-  const location = useLocation(); // To get the current route
+  const location = useLocation(); 
   const [userRole, setUserRole] = useState(null);
   const [username, setUsername] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function Header() {
     navigate("/login");
   };
 
-  const isHome = location.pathname === "/"; // Check if the current page is the homepage
+  const isHome = location.pathname === "/"; 
 
   return (
     <header className="w-full h-[70px] bg-gradient-to-r from-teal-600 to-green-500 shadow-md flex items-center justify-between px-6 text-white font-semibold text-lg sticky top-0 z-50">

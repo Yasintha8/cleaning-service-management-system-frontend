@@ -47,7 +47,7 @@ export default function RegisterPage() {
         <div className="w-full md:w-1/2 flex justify-center items-center">
             <div className="w-full max-w-md backdrop-blur-xl border border-white shadow-2xl rounded-xl flex flex-col items-center p-6 mt-20 md:mt-0">
             <h1 className="text-green-600 text-4xl md:text-6xl font-extrabold drop-shadow text-center">
-                SparklePro
+                Smart Care
             </h1>
             <span className="text-purple-600 font-semibold text-xl md:text-3xl drop-shadow text-center">
                 Cleaning Service
